@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Posts() {
   // const [posts, setPosts] = useState([]);
   const { posts } = usePostContext();
-  // const localhost = "http://localhost:3000/posts";
+  const localhost = "http://localhost:3000/posts";
 
   // useEffect(() => {
   //   fetchPosts();
