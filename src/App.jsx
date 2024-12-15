@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //* Contexts
-import { PostContextProvider } from "./Contexts/postContext";
+import { PostContentProvider } from "./Contexts/postContext";
 
 //* Layout import
 import DefaultLayout from "./Layouts/DefaultLayout";
@@ -16,7 +16,7 @@ BrowserRouter;
 
 function App() {
   return (
-    <PostContextProvider>
+    <PostContentProvider>
       <BrowserRouter>
         <Routes>
           <Route Component={DefaultLayout}>
@@ -29,7 +29,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </PostContextProvider>
+    </PostContentProvider>
   );
 }
 
