@@ -4,9 +4,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 const PostContext = createContext();
 
 //* Esporto il provider
-export const PostContextProvider = ({ children }) => {
+export const PostContentProvider = ({ children }) => {
   const localhost = "http://localhost:3000/posts";
-  const [posts, setPosts] = useState({
+
+  const [postsData, setPostsData] = useState({
     posts: [],
   });
 
@@ -18,18 +19,21 @@ export const PostContextProvider = ({ children }) => {
     fetch(localhost)
       .then((res) => res.json())
       .then((data) => {
-        const postsOK = data.map((post) => ({
+        const posts = data.map((post) => ({
           id: post.id,
           image: post.image,
           title: post.title,
-          category: post,
+          category: post.category,
         }));
-        const newPosts = { ...posts, postsOK };
-        setPosts(newPosts);
+
+        const newPostsData = { ...postsData, posts };
+        setPostsData(newPostsData);
       });
   };
 
-  return <PostContext.Provider value={posts}>{children}</PostContext.Provider>;
+  return (
+    <PostContext.Provider value={postsData}>{children}</PostContext.Provider>
+  );
 };
 
 //* Esporto lo "use" per i consumers
